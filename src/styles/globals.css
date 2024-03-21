@@ -1,0 +1,13 @@
+body {
+    background-color: gray;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* criando pseudos-variáveis no global.css para q possa ser referenciado c/ dado relativo */
+:root {
+    --area-porta-altura: 310px;
+    --area-porta-largura: 200px;
+}
