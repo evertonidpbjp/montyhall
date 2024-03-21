@@ -1,7 +1,8 @@
 import { RespostaModel } from "./RespostaModel";
+import { embaralhar } from "@/functions/embaralhar";
 
 export class QuestaoModel {
-    // private é do ts e # é o padrão do action script
+    // private é do ts e # é o padrão do emascript
     #id: number;
     #enunciado: string;
     #respostas: RespostaModel[];
@@ -41,5 +42,25 @@ get respondida (): boolean {
     }
     return false;
 }
+
+embaralharRespostas(): QuestaoModel{
+  let respostasEmbaralhadas = embaralhar(this.#respostas);
+  return new QuestaoModel(this.#id, this.enunciado, respostasEmbaralhadas, this.#acertou)
+}
+
+
+
+// para devolver os dados na api, é preciso q ele seja convertido p/ objeto, obrigando a criar esse método p/ devolver todos os atributos da classe
+converteParaObjeto() {
+    return {
+        id: this.#id,
+        enunciado: this.#enunciado,
+        respostas: this.#respostas.map(resposta => {
+            return resposta.converteParaObjeto();
+        }),
+        acertou: this.#acertou
+    }
+}
+
 
 }
