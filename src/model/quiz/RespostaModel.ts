@@ -32,6 +32,7 @@ getRevelada():boolean {
     return this.revelada
 }
 
+// para devolver os dados na api, é preciso q ele seja convertido p/ objeto, obrigando a criar esse método p/ devolver todos os atributos da classe
 converteParaObjeto(){
     return {
         valor: this.valor,
@@ -40,6 +41,12 @@ converteParaObjeto(){
         
     }
 
+}
+// quando o usuário selecionada uma resposta dentre as opções, o sistema precisa revelar tanto a resposta selecionada quanto a resposta certa 
+// esse método serve p/ modificar o atributo "revelada" sempre para true, fazendo a resposta selecionada ficar com o status de revelada e ser apresentada
+// ao usuário (esse método é chamado na Classe QuestãoModel método responderCom)
+revelar(){
+    return new RespostaModel(this.getValor(), this.getCerta(), true)
 }
 
 }
