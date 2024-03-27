@@ -34,10 +34,15 @@ get respostas(): any[] {
 get acertou (): boolean {
     return this.#acertou
 }
+// apenas inverte o resultado da função seguinte
+get naoRespondida (): boolean {
+  return !this.respondida;
+}
 
+// verifica se a questão foi respondida 
 get respondida (): boolean {
     for(let resposta of this.#respostas) {
-        if(resposta.getRevelada) return true;
+        if(resposta.getRevelada()) return true;
         
       
     }
