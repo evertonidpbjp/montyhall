@@ -2,7 +2,7 @@ import banco from '../banco';
 
 export default async function handler(req, res) {
     const idSelecionado = +req.query.id
-
+    
     const questaoOuNada = banco.filter(questao =>  questao.id === idSelecionado)
    
     if(questaoOuNada.length === 1) {

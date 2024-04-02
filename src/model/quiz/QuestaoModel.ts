@@ -88,5 +88,14 @@ responderCom(indice: number): QuestaoModel {
 return new QuestaoModel(this.#id, this.#enunciado, respostas, acertou);
 }
 
+// função estática q converte objeto literal recebido via json da API p/ o formato do modelo Questão (tem um sm no RespostaModel)
+static criarUsandoObjeto (obj: QuestaoModel) : QuestaoModel {
+    const respostas = obj.respostas.map(resp => RespostaModel.criarUsandoObjeto(resp))
+    return new QuestaoModel(obj.#id, obj.#enunciado, respostas, obj.#acertou)
+
+
+}
+
+
 
 }

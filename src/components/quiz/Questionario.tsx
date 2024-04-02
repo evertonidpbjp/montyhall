@@ -12,6 +12,7 @@ interface QuestionarioProps{
 }
 
 export default function Questionario(props: QuestionarioProps){
+    // ocorre aqui uma comunicação indireta, em q este componente filho irá enviar via função questaoRespondida c/ o componente pai
     function respostaFornecida(indice: number) {
         if(props.questao.naoRespondida) {
             props.questaoRespondida(props.questao.responderCom(indice))

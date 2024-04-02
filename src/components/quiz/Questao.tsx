@@ -23,12 +23,13 @@ interface QuestaoProps {
 
 
 export default function Questao(props: QuestaoProps){
+  // obtém uma instancia da questao
   const questao = props.valor;
    
   function renderizarRespostas(){
      return  questao.respostas.map((resposta, i) => {
         return   <Resposta 
-                key={i}
+                key={`${questao.id}-${i}`}
                 objeto={resposta}
                 indice={i}
                 letra={letras[i].valor}
@@ -43,9 +44,8 @@ export default function Questao(props: QuestaoProps){
      <div className={styles.questao}>
 
         <Enunciado texto={questao.enunciado}/>
-        <Temporizador duracao={props.tempoParaResponder ?? 10}  tempoEsgotado={props.tempoEsgotado}/>
+        <Temporizador key={questao.id} duracao={props.tempoParaResponder ?? 10}  tempoEsgotado={props.tempoEsgotado}/>
         {renderizarRespostas()}
-       <Button texto="botao" href="/quiz/resultado"/>
       
 
      </div>

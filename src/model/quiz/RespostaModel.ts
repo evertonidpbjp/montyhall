@@ -49,4 +49,11 @@ revelar(){
     return new RespostaModel(this.getValor(), this.getCerta(), true)
 }
 
+// função estática q converte objeto literal recebido via json da API p/ o formato do RespostaModel (tem um sm no QuestaoModel)
+static criarUsandoObjeto(obj: RespostaModel): RespostaModel{
+   return  new RespostaModel(obj.getValor(), obj.getCerta(), obj.getRevelada());
+}
+
+
+
 }
